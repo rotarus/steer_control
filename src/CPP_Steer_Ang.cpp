@@ -20,7 +20,7 @@ class SteerAngleNode : public rclcpp::Node
   public:
     SteerAngleNode() : Node("steer_angle"), count_(0)
     {
-      publisher_ = this->create_publisher<lgsvl_msgs::msg::VehicleControlData>("steer_ang", 10);
+      publisher_ = this->create_publisher<lgsvl_msgs::msg::VehicleControlData>("/lgsvl/vehicle_control_cmd", 10);
       timer_ = this->create_wall_timer(100ms, std::bind(&SteerAngleNode::timer_callback, this));
       RCLCPP_INFO(this-> get_logger(), "Steer Angle Has Been Started!");
 
